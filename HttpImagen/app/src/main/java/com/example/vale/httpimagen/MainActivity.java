@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
          **/
-
+/*
        CalculaLetraDni cl = new CalculaLetraDni();
+
 
 
         try
@@ -51,7 +54,17 @@ public class MainActivity extends AppCompatActivity {
         catch (Throwable t)
         {
             Log.e(getClass().getCanonicalName(), "Error", t);
-        }
+        }*/
+
+        Persona persona=new Persona(12,"Fernando");
+        //Transformamos un objeto y lo serializamos a JSON
+        Gson gson= new Gson();
+        String personaJson=gson.toJson(persona);
+        Log.d("MENSAJE","Persona en formato JSON: "+personaJson);
+        //Para transformar un JSON en objeto Java.
+        Persona persona1=gson.fromJson(personaJson,Persona.class);
+        Log.d("MENSAJE","Deserializamos el JSON Persona p1 deserializada "+persona1.toString());
+
 
 
     }
